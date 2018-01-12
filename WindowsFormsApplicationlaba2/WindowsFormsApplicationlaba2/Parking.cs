@@ -9,7 +9,7 @@ namespace WindowsFormsApplicationlaba2
 {
     class Parking
     {
-        ClassArray<IAnimal> parking;
+        List<ClassArray<IAnimal>> parkingStages;
 
         int countPlaces = 20;
 
@@ -17,31 +17,55 @@ namespace WindowsFormsApplicationlaba2
 
         int placeSizeHeight = 80;
 
-        public Parking()
+        int currentLevel;
+
+        public int getCurrentLevel { get { return currentLevel; } }
+
+        public Parking(int countStages)
         {
-            parking = new ClassArray<IAnimal>(countPlaces, null);
+            parkingStages = new List<ClassArray<IAnimal>>(countStages);
+            for (int i = 0; i < countStages; i++)
+            {
+                parkingStages.Add(new ClassArray<IAnimal>(countPlaces, null));
+            }
         }
 
-        public int PutTarantulInShowcase(IAnimal tarantul)
+        public void LevelUp()
         {
-            return parking + tarantul;
+            if (currentLevel + 1 < parkingStages.Count)
+            {
+                currentLevel++;
+            }
         }
 
-        public IAnimal GetTarantulInShowcase(int tarantul)
+        public void LevelDown()
         {
-            return parking - tarantul;
+            if (currentLevel > 0)
+            {
+                currentLevel--;
+            }
         }
 
-        public void Draw(Graphics g, int wight, int height)
+        public int PutTarantulInShowcase(IAnimal ianimal)
+        {
+            return parkingStages[currentLevel] + ianimal;
+        }
+
+        public IAnimal GetTarantulInShowcase(int ticket)
+        {
+            return parkingStages[currentLevel] - ticket;
+        }
+
+        public void Draw(Graphics g)
         {
             DrawMarking(g);
             for (int i = 0; i < countPlaces; i++)
             {
-                var stone = parking.getObject(i);
-                if (stone != null)
+                var ianimal = parkingStages[currentLevel][i];
+                if (ianimal != null)
                 {
-                    stone.setPosition(5 + i / 5 * placeSizeWidth, i % 5 * placeSizeHeight);
-                    stone.drawSpiderwolf(g);
+                    ianimal.setPosition(5 + i / 5 * placeSizeWidth, i % 5 * placeSizeHeight);
+                    ianimal.drawSpiderwolf(g);
                 }
             }
         }
@@ -49,15 +73,23 @@ namespace WindowsFormsApplicationlaba2
         public void DrawMarking(Graphics g)
         {
             Pen pen = new Pen(Color.Black, 3);
+            g.DrawString("L" + (currentLevel + 1), new Font("Arial", 30), new SolidBrush(Color.Blue), (countPlaces / 5) * placeSizeWidth - 70, 420);
             g.DrawRectangle(pen, 0, 0, (countPlaces / 5) * placeSizeWidth, 480);
             for (int i = 0; i < countPlaces / 5; i++)
             {
                 for (int j = 0; j < 6; ++j)
                 {
                     g.DrawLine(pen, i * placeSizeWidth, j * placeSizeHeight, i * placeSizeWidth + 110, j * placeSizeHeight);
+                    if (j < 5)
+                    {
+                        g.DrawString((i * 5 + j + 1).ToString(), new Font("Arial", 30), new SolidBrush(Color.Blue), i * placeSizeWidth + 30, j * placeSizeHeight + 20);
+
+                    }
                 }
                 g.DrawLine(pen, i * placeSizeWidth, 0, i * placeSizeWidth, 400);
             }
         }
+
+
     }
 }
