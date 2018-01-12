@@ -37,10 +37,11 @@ namespace WindowsFormsApplicationlaba2
             startPosX = x;
             startPosY = y;
         }
-
+        public abstract string getInfo();
     }
 
 }
+
 
 
 

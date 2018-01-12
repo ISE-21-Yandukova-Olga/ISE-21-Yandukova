@@ -59,7 +59,19 @@ namespace WindowsFormsApplicationlaba2
             startPosY = 0;
 
         }
-
+        public Spiderswolf(string info)
+        {
+            string[] strs = info.Split(';');
+            if (strs.Length == 3)
+            {
+                Weight = Convert.ToInt32(strs[0]);
+                MaxSpeed = Convert.ToInt32(strs[1]);
+                ColorBody = Color.FromName(strs[2]);
+            }
+            Random rand = new Random();
+            startPosX = rand.Next(10, 200);
+            startPosY = rand.Next(10, 200);
+        }
         public override void drawSpiderwolf(Graphics g)
         {
             drawSpider(g);
@@ -98,6 +110,14 @@ namespace WindowsFormsApplicationlaba2
             startPosX += MaxSpeed * 50 / (float)Weight;
             drawSpiderwolf(g);
         }
+        public override string getInfo()
+        {
+            return Weight + ";" + MaxSpeed + ";" + ColorBody.Name;
+        }
     }
 }
+
+
+
+
 

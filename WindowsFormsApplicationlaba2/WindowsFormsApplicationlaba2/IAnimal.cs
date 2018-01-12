@@ -13,6 +13,7 @@ namespace WindowsFormsApplicationlaba2
         void drawSpiderwolf(Graphics g);
         void setPosition(int x, int y);
         void setMainColor(Color color);
+        string getInfo();
     }
 
 }

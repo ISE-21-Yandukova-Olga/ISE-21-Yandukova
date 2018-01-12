@@ -21,6 +21,19 @@ namespace WindowsFormsApplicationlaba2
 
 
         }
+        public Tarantul(string info) : base(info)
+        {
+            string[] strs = info.Split(';');
+            if (strs.Length == 5)
+            {
+                Weight = Convert.ToInt32(strs[0]);
+                MaxSpeed = Convert.ToInt32(strs[1]);
+
+                ColorBody = Color.FromName(strs[2]);
+                uzor = Convert.ToBoolean(strs[3]);
+                dopcolor = Color.FromName(strs[4]);
+            }
+        }
 
         protected override void drawSpider(Graphics g)
         {
@@ -45,9 +58,14 @@ namespace WindowsFormsApplicationlaba2
         {
             dopcolor = color;
         }
-
+        public override string getInfo()
+        {
+            return Weight + ";" + MaxSpeed + ";" + ColorBody.Name + ";" + uzor + ";" + dopcolor.Name;
+        }
     }
 }
+
+
 
 
 
