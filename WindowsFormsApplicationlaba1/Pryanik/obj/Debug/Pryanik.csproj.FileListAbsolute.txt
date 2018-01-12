@@ -1,0 +1,18 @@
+c:\users\carrot\documents\visual studio 2015\Projects\Pryanik\Pryanik\bin\Debug\Pryanik.exe.config
+c:\users\carrot\documents\visual studio 2015\Projects\Pryanik\Pryanik\bin\Debug\Pryanik.exe
+c:\users\carrot\documents\visual studio 2015\Projects\Pryanik\Pryanik\bin\Debug\Pryanik.pdb
+c:\users\carrot\documents\visual studio 2015\Projects\Pryanik\Pryanik\obj\Debug\Pryanik.csprojResolveAssemblyReference.cache
+c:\users\carrot\documents\visual studio 2015\Projects\Pryanik\Pryanik\obj\Debug\Pryanik.Form1.resources
+c:\users\carrot\documents\visual studio 2015\Projects\Pryanik\Pryanik\obj\Debug\Pryanik.Properties.Resources.resources
+c:\users\carrot\documents\visual studio 2015\Projects\Pryanik\Pryanik\obj\Debug\Pryanik.csproj.GenerateResource.Cache
+c:\users\carrot\documents\visual studio 2015\Projects\Pryanik\Pryanik\obj\Debug\Pryanik.exe
+c:\users\carrot\documents\visual studio 2015\Projects\Pryanik\Pryanik\obj\Debug\Pryanik.pdb
+C:\Users\user\Desktop\Pryanik\Pryanik\bin\Debug\Pryanik.exe.config
+C:\Users\user\Desktop\Pryanik\Pryanik\obj\Debug\Pryanik.exe
+C:\Users\user\Desktop\Pryanik\Pryanik\obj\Debug\Pryanik.pdb
+C:\Users\user\Desktop\Pryanik\Pryanik\bin\Debug\Pryanik.exe
+C:\Users\user\Desktop\Pryanik\Pryanik\bin\Debug\Pryanik.pdb
+C:\Users\user\Desktop\Pryanik\Pryanik\obj\Debug\Pryanik.csprojResolveAssemblyReference.cache
+C:\Users\user\Desktop\Pryanik\Pryanik\obj\Debug\Pryanik.Form1.resources
+C:\Users\user\Desktop\Pryanik\Pryanik\obj\Debug\Pryanik.Properties.Resources.resources
+C:\Users\user\Desktop\Pryanik\Pryanik\obj\Debug\Pryanik.csproj.GenerateResource.Cache
