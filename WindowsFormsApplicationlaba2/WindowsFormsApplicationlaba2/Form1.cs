@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -12,58 +13,40 @@ namespace WindowsFormsApplicationlaba2
 {
     public partial class Form1 : Form
     {
-        private IAnimal inter;
-        Color color;
-
-        int maxSpeed;
-
-        int weight;
-        bool uzor;
-        Color dopcolor;
-
-
+        Parking parking;
 
         public Form1()
         {
             InitializeComponent();
-            color = Color.Black;
-
-            weight = 20;
-            maxSpeed = 30;
-            button2.BackColor = color;
-            dopcolor = Color.Red;
-            button4.BackColor = dopcolor;
-
+            parking = new Parking();
+            Draw();
         }
 
-        private bool checkFields()
+
+        private void Draw()
         {
-            if (!int.TryParse(textBox1.Text, out maxSpeed))
-            {
-                return false;
-            }
-            if (!int.TryParse(textBox2.Text, out weight))
-            {
-                return false;
-            }
-            return true;
+            Bitmap bmp = new Bitmap(pictureBox1.Width, pictureBox1.Height);
+            Graphics gr = Graphics.FromImage(bmp);
+            parking.Draw(gr, pictureBox1.Width, pictureBox1.Height);
+            pictureBox1.Image = bmp;
         }
 
 
 
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            inter = new Spiderswolf(maxSpeed, weight, color);
-            Bitmap bmp = new Bitmap(pictureBox1.Width, pictureBox1.Height);
-            Graphics gr = Graphics.FromImage(bmp);
-            inter.drawSpiderwolf(gr);
-            pictureBox1.Image = bmp;
+
+            ColorDialog dialog = new ColorDialog();
+            if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                var tarantul = new Spiderswolf(30, 5, dialog.Color);
+
+                int place = parking.PutTarantulInShowcase(tarantul);
+                Draw();
+                MessageBox.Show("Ваше место: " + place);
+            }
 
 
         }
@@ -73,61 +56,51 @@ namespace WindowsFormsApplicationlaba2
 
         }
 
+
+
+
         private void button3_Click(object sender, EventArgs e)
         {
-            if (checkFields())
+
+            ColorDialog dialog = new ColorDialog();
+            if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                uzor = true;
-                inter = new Tarantul(maxSpeed, weight, color, checkBox1.Checked, dopcolor);
-                Bitmap bmp = new Bitmap(pictureBox1.Width, pictureBox1.Height);
-                Graphics gr = Graphics.FromImage(bmp);
-                inter.drawSpiderwolf(gr);
-                pictureBox1.Image = bmp;
+                ColorDialog dialogDop = new ColorDialog();
+                if (dialogDop.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    var tarantul = new Tarantul(30, 5, dialog.Color, true, dialogDop.Color);
+                    int place = parking.PutTarantulInShowcase(tarantul);
+                    Draw();
+                    MessageBox.Show("Ваше место: " + place);
+                }
             }
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            ColorDialog cd = new ColorDialog();
-            if (cd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-                color = cd.Color;
-                button2.BackColor = color;
-            }
 
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            ColorDialog cd = new ColorDialog();
-            if (cd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-                dopcolor = cd.Color;
-                button4.BackColor = dopcolor;
-            }
-
-
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-            if (inter != null)
-            {
-                Bitmap bmp = new Bitmap(pictureBox1.Width, pictureBox1.Height);
-                Graphics gr = Graphics.FromImage(bmp);
-                inter.moveSpiderwolf(gr);
-                pictureBox1.Image = bmp;
-            }
-
-
-        }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            textBox1.Text = maxSpeed.ToString();
-            textBox2.Text = weight.ToString();
 
+        }
+
+
+        
+        
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (maskedTextBox1.Text != "")
+            {
+                var car = parking.GetTarantulInShowcase(Convert.ToInt32(maskedTextBox1.Text));
+
+                Bitmap bmp = new Bitmap(pictureBox2.Width, pictureBox2.Height);
+                Graphics gr = Graphics.FromImage(bmp);
+                car.setPosition(5, 5);
+                car.drawSpiderwolf(gr);
+                pictureBox2.Image = bmp;
+                Draw();
+            }
         }
     }
 }

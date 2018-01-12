@@ -30,9 +30,9 @@ namespace WindowsFormsApplicationlaba2
 
 
                 Pen pe = new Pen(dopcolor);
-                g.DrawEllipse(pe, startPosX + 50, startPosY + 35, 30, 30);
-                g.DrawEllipse(pe, startPosX + 55, startPosY + 40, 20, 20);
-                g.DrawEllipse(pe, startPosX + 60, startPosY + 45, 10, 10);
+                g.DrawEllipse(pe, startPosX + 50, startPosY + 35,  30,  30);
+                g.DrawEllipse(pe, startPosX + 55, startPosY + 40, 20,  20);
+                g.DrawEllipse(pe, startPosX + 60, startPosY + 45,  10, 10);
 
                 Brush br = new SolidBrush(dopcolor);
                 g.FillEllipse(br, startPosX + 55, startPosY + 12, 10, 10);
