@@ -1,0 +1,9 @@
+c:\users\user\documents\visual studio 2015\Projects\WindowsFormsApplicationlaba2\WindowsFormsApplicationlaba2\bin\Debug\WindowsFormsApplicationlaba2.exe.config
+c:\users\user\documents\visual studio 2015\Projects\WindowsFormsApplicationlaba2\WindowsFormsApplicationlaba2\obj\Debug\WindowsFormsApplicationlaba2.csprojResolveAssemblyReference.cache
+c:\users\user\documents\visual studio 2015\Projects\WindowsFormsApplicationlaba2\WindowsFormsApplicationlaba2\obj\Debug\WindowsFormsApplicationlaba2.Form1.resources
+c:\users\user\documents\visual studio 2015\Projects\WindowsFormsApplicationlaba2\WindowsFormsApplicationlaba2\obj\Debug\WindowsFormsApplicationlaba2.Properties.Resources.resources
+c:\users\user\documents\visual studio 2015\Projects\WindowsFormsApplicationlaba2\WindowsFormsApplicationlaba2\obj\Debug\WindowsFormsApplicationlaba2.csproj.GenerateResource.Cache
+c:\users\user\documents\visual studio 2015\Projects\WindowsFormsApplicationlaba2\WindowsFormsApplicationlaba2\bin\Debug\WindowsFormsApplicationlaba2.exe
+c:\users\user\documents\visual studio 2015\Projects\WindowsFormsApplicationlaba2\WindowsFormsApplicationlaba2\bin\Debug\WindowsFormsApplicationlaba2.pdb
+c:\users\user\documents\visual studio 2015\Projects\WindowsFormsApplicationlaba2\WindowsFormsApplicationlaba2\obj\Debug\WindowsFormsApplicationlaba2.exe
+c:\users\user\documents\visual studio 2015\Projects\WindowsFormsApplicationlaba2\WindowsFormsApplicationlaba2\obj\Debug\WindowsFormsApplicationlaba2.pdb
