@@ -19,7 +19,7 @@ namespace WindowsFormsApplicationlaba2
             maxCount = size;
         }
 
-        public static int operator +(ClassArray<T> p, T ianimal)
+        public static int operator +(ClassArray<T> p, T stone)
         {
             if (p.places.Count == p.maxCount)
             {
@@ -29,11 +29,11 @@ namespace WindowsFormsApplicationlaba2
             {
                 if (p.CheckFreePlace(i))
                 {
-                    p.places.Add(i, ianimal);
+                    p.places.Add(i, stone);
                     return i;
                 }
             }
-            p.places.Add(p.places.Count, ianimal);
+            p.places.Add(p.places.Count, stone);
             return p.places.Count - 1;
         }
 
@@ -66,3 +66,4 @@ namespace WindowsFormsApplicationlaba2
         }
     }
 }
+

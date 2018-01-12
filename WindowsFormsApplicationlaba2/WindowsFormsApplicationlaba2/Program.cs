@@ -6,6 +6,7 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApplicationlaba2
 {
+    public delegate void myDel(WindowsFormsApplicationlaba2.IAnimal ianimal);
     static class Program
     {
         /// <summary>

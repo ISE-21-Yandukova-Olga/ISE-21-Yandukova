@@ -7,11 +7,12 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApplicationlaba2
 {
-    interface IAnimal
+    public interface IAnimal
     {
         void moveSpiderwolf(Graphics g);
         void drawSpiderwolf(Graphics g);
         void setPosition(int x, int y);
+        void setMainColor(Color color);
     }
 
 }

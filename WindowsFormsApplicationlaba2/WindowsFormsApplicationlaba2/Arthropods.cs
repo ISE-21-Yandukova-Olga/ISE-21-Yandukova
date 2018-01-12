@@ -15,7 +15,7 @@ namespace WindowsFormsApplicationlaba2
 
         public virtual int MaxSpeed { protected set; get; }
 
-        public Color ColorBody { protected set; get; }
+        public System.Drawing.Color ColorBody { protected set; get; }
 
         public virtual double Weight { protected set; get; }
 
@@ -26,6 +26,10 @@ namespace WindowsFormsApplicationlaba2
 
 
         public abstract void moveSpiderwolf(Graphics g);
+        public virtual void setMainColor(Color color)
+        {
+            ColorBody = color;
+        }
 
 
         public void setPosition(int x, int y)
@@ -35,6 +39,7 @@ namespace WindowsFormsApplicationlaba2
         }
 
     }
+
 }
 
 

@@ -53,9 +53,10 @@ namespace WindowsFormsApplicationlaba2
             this.MaxSpeed = maxSpeed;
             this.ColorBody = color;
             this.Weight = weight;
-            Random rand = new Random();
-            startPosX = rand.Next(0, 0);
-            startPosY = rand.Next(0, 0);
+
+            //Random rand = new Random();
+            startPosX = 0;
+            startPosY = 0;
 
         }
 
@@ -73,7 +74,7 @@ namespace WindowsFormsApplicationlaba2
             g.FillEllipse(brush, startPosX + 50, startPosY + 10, 30, 30);
             g.FillEllipse(brush, startPosX + 45, startPosY + 30, 40, 40);
             Pen pen = new Pen(ColorBody);
-            g.DrawLine(pen, startPosX + 35, startPosY + 30, startPosX + 50, startPosY +40);
+            g.DrawLine(pen, startPosX + 35, startPosY + 30, startPosX + 50, startPosY + 40);
             g.DrawLine(pen, startPosX + 30, startPosY + 45, startPosX + 50, startPosY + 50);
             g.DrawLine(pen, startPosX + 35, startPosY + 65, startPosX + 50, startPosY + 60);
             g.DrawLine(pen, startPosX + 25, startPosY + 40, startPosX + 35, startPosY + 30);
@@ -98,5 +99,5 @@ namespace WindowsFormsApplicationlaba2
             drawSpiderwolf(g);
         }
     }
-
 }
+
