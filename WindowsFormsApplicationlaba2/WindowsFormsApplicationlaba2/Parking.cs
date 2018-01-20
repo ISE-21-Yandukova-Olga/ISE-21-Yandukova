@@ -52,7 +52,7 @@ namespace WindowsFormsApplicationlaba2
             return parkingStages[currentLevel] + ianimal;
         }
 
-        public IAnimal PutTarantulInShowcase(int ticket)
+        public IAnimal GetTarantulInShowcase(int ticket)
         {
             return parkingStages[currentLevel] - ticket;
         }

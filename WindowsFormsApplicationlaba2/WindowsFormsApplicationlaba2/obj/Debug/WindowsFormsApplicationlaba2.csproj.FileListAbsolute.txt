@@ -16,3 +16,5 @@ C:\Users\user\Desktop\прогр\WindowsFormsApplicationlaba2\WindowsFormsApplic
 C:\Users\user\Desktop\прогр\WindowsFormsApplicationlaba2\WindowsFormsApplicationlaba2\obj\Debug\WindowsFormsApplicationlaba2.Form1.resources
 C:\Users\user\Desktop\прогр\WindowsFormsApplicationlaba2\WindowsFormsApplicationlaba2\obj\Debug\WindowsFormsApplicationlaba2.Properties.Resources.resources
 C:\Users\user\Desktop\прогр\WindowsFormsApplicationlaba2\WindowsFormsApplicationlaba2\obj\Debug\WindowsFormsApplicationlaba2.csproj.GenerateResource.Cache
+C:\Users\user\Desktop\прогр\WindowsFormsApplicationlaba2\WindowsFormsApplicationlaba2\bin\Debug\NLog.dll
+C:\Users\user\Desktop\прогр\WindowsFormsApplicationlaba2\WindowsFormsApplicationlaba2\bin\Debug\NLog.xml

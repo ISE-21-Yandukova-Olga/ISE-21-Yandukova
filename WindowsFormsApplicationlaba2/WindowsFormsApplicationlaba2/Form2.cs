@@ -1,17 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+using NLog;
+
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 using System.Windows.Forms;
 
 namespace WindowsFormsApplicationlaba2
 {
     public partial class Form2 : Form
     {
+        private Logger log;
         IAnimal ianimal = null;
         public IAnimal getIAnimal { get { return ianimal; } }
 
@@ -30,6 +28,7 @@ namespace WindowsFormsApplicationlaba2
 
         public Form2()
         {
+            log = LogManager.GetCurrentClassLogger();
             InitializeComponent();
             panelColorBlack.MouseDown += panelColor_MouseDown;
             panelColorYellow.MouseDown += panelColor_MouseDown;
@@ -78,6 +77,7 @@ namespace WindowsFormsApplicationlaba2
 
         private void labelBaseColor_DragEnter(object sender, DragEventArgs e)
         {
+            log.Info("Выбор цвета:" + (Color)e.Data.GetData(typeof(Color)));
             if (e.Data.GetDataPresent(typeof(Color)))
                 e.Effect = DragDropEffects.Copy;
             else
@@ -86,6 +86,7 @@ namespace WindowsFormsApplicationlaba2
 
         private void labelDopColor_DragDrop(object sender, DragEventArgs e)
         {
+            log.Info("Выбор доп.цвета:" + (Color)e.Data.GetData(typeof(Color)));
             if (ianimal != null)
             {
                 if (ianimal is Tarantul)
@@ -165,14 +166,15 @@ namespace WindowsFormsApplicationlaba2
 
         private void labelSpiderswolf_MouseDown(object sender, MouseEventArgs e)
         {
+            log.Info("Перемещение паука");
             buttonSpiderswolf.DoDragDrop(buttonSpiderswolf.Text, DragDropEffects.Move | DragDropEffects.Copy);
         }
 
         private void labelTarantul_MouseDown(object sender, MouseEventArgs e)
         {
+            log.Info("Перемещение тарантула");
             buttonTarantul.DoDragDrop(buttonTarantul.Text, DragDropEffects.Move | DragDropEffects.Copy);
         }
     }
 }
-
 

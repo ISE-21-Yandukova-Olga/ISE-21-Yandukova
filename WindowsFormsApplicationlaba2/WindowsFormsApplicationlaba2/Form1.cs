@@ -1,22 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+﻿using NLog;
+using System;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WindowsFormsApplicationlaba2
 {
     public partial class Form1 : Form
     {
+        private Logger log;
         Parking parking;
         Form2 form;
         public Form1()
         {
             InitializeComponent();
+            log = LogManager.GetCurrentClassLogger();
             parking = new Parking(5);
             for (int i = 1; i < 6; i++)
             {
@@ -61,6 +58,7 @@ namespace WindowsFormsApplicationlaba2
 
         private void button4_Click(object sender, EventArgs e)
         {
+            log.Info("Добавление паука:" + parking.getCurrentLevel);
             form = new Form2();
             form.AddIAnimal(AddSpider);
             form.Show();
@@ -69,13 +67,20 @@ namespace WindowsFormsApplicationlaba2
         {
             if (ianimal != null)
             {
-                int place = parking.PutTarantulInShowcase(ianimal);
-                if (place > -1)
+                try
                 {
+                    int place = parking.PutTarantulInShowcase(ianimal);
                     Draw();
                     MessageBox.Show("Ваше место:" + place);
                 }
-                else MessageBox.Show("Не удалось задать паука");
+                catch (ParkingOverflowException ex)
+                {
+                    MessageBox.Show(ex.Message, "Ошибка переполнения", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Общая ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
@@ -88,19 +93,27 @@ namespace WindowsFormsApplicationlaba2
 
                 if (maskedTextBox1.Text != "")
                 {
-                    IAnimal ianimal = parking.PutTarantulInShowcase(Convert.ToInt32(maskedTextBox1.Text));
-                    if (ianimal != null)
+                    try
                     {
-                        Bitmap bmp = new Bitmap(pictureBox2.Width, pictureBox2.Height);
-                        Graphics gr = Graphics.FromImage(bmp);
-                        ianimal.setPosition(5, 5);
-                        ianimal.drawSpiderwolf(gr);
-                        pictureBox2.Image = bmp;
-                        Draw();
+                        IAnimal ianimal = parking.GetTarantulInShowcase(Convert.ToInt32(maskedTextBox1.Text));
+                        if (ianimal != null)
+                        {
+                            Bitmap bmp = new Bitmap(pictureBox2.Width, pictureBox2.Height);
+                            Graphics gr = Graphics.FromImage(bmp);
+                            ianimal.setPosition(5, 5);
+                            ianimal.drawSpiderwolf(gr);
+                            pictureBox2.Image = bmp;
+                            Draw();
+                            log.Info("Изъятие паука с места:" + Convert.ToInt32(maskedTextBox1.Text) + "успешно");
+                        }
                     }
-                    else
+                    catch (ParkingIndexOutOfRangeException ex)
                     {
-                        MessageBox.Show("Извините, на этом месте нет паука");
+                        MessageBox.Show(ex.Message, "Неверный номер", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Общая ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
 
                 }
@@ -171,6 +184,22 @@ namespace WindowsFormsApplicationlaba2
                 Draw();
 
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            parking.LevelDown();
+            log.Info("Переход на уровень ниже Текущий уровень:" + parking.getCurrentLevel);
+            listBox1.SelectedIndex = parking.getCurrentLevel;
+            Draw();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            parking.LevelUp();
+            log.Info("Переход на уровень выше Текущий уровень:" + parking.getCurrentLevel);
+            listBox1.SelectedIndex = parking.getCurrentLevel;
+            Draw();
         }
     }
 }
