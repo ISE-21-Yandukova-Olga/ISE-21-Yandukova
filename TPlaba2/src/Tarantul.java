@@ -12,7 +12,7 @@ public class Tarantul extends Spiderswolf {
 		this.dopcolor = dopcolor;
 	}
 
-	protected void drawSpider (Graphics g) {
+	protected void drawSpider(Graphics g) {
 		super.drawSpider(g);
 
 		if (uzor) {
