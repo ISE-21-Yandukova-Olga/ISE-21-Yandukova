@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApplicationlaba2
 {
-    class Spiderswolf : Arthropods
+    public class Spiderswolf : Arthropods, IComparable<Spiderswolf>, IEquatable<Spiderswolf>
     {
         public override int MaxSpeed
         {
@@ -114,8 +114,74 @@ namespace WindowsFormsApplicationlaba2
         {
             return Weight + ";" + MaxSpeed + ";" + ColorBody.Name;
         }
+        public int CompareTo(Spiderswolf other)
+        {
+            if (other == null)
+            {
+                return 1;
+            }
+            if (Weight != other.Weight)
+            {
+                return Weight.CompareTo(other.Weight);
+            }
+            if (MaxSpeed != other.MaxSpeed)
+            {
+                return MaxSpeed.CompareTo(other.MaxSpeed);
+            }
+
+            if (ColorBody!= other.ColorBody)
+            {
+                return ColorBody.Name.CompareTo(other.ColorBody.Name);
+            }
+            return 0;
+        }
+
+        public bool Equals(Spiderswolf other)
+        {
+            if (other == null)
+            {
+                return false;
+            }
+            if (Weight != other.Weight)
+            {
+                return false;
+            }
+            if (MaxSpeed != other.MaxSpeed)
+            {
+                return false;
+            }
+
+            if (ColorBody != other.ColorBody)
+            {
+                return false;
+            }
+            return true;
+        }
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+
+            }
+            Spiderswolf SpiderswolfObj = obj as Spiderswolf;
+            if (SpiderswolfObj == null)
+            {
+                return false;
+            }
+            else
+            {
+                return Equals(SpiderswolfObj);
+            }
+        }
+        public override int GetHashCode()
+        {
+            return MaxSpeed.GetHashCode();
+        }
     }
 }
+
+
 
 
 

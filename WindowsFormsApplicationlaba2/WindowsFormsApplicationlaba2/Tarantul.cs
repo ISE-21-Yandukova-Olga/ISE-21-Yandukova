@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApplicationlaba2
 {
-    class Tarantul : Spiderswolf
+    class Tarantul : Spiderswolf, IComparable<Tarantul>, IEquatable<Tarantul>
     {
         private Color dopcolor;
         private bool uzor;
@@ -62,9 +62,64 @@ namespace WindowsFormsApplicationlaba2
         {
             return Weight + ";" + MaxSpeed + ";" + ColorBody.Name + ";" + uzor + ";" + dopcolor.Name;
         }
+        public int CompareTo(Tarantul other)
+        {
+            var res = (this is Spiderswolf).CompareTo(other is Spiderswolf);
+            if (res != 0)
+            {
+                return res;
+            }
+            if (uzor != other.uzor)
+            {
+                return uzor.CompareTo(other.uzor);
+            }
+            if (dopcolor != other.dopcolor)
+            {
+                return dopcolor.Name.CompareTo(other.dopcolor.Name);
+            }
+            return 0;
+        }
+
+        public bool Equals(Tarantul other)
+        {
+            var res = (this is Spiderswolf).Equals(other is Spiderswolf);
+            if (!res)
+            {
+                return res;
+            }
+            if (uzor != other.uzor)
+            {
+                return false;
+            }
+            if (dopcolor != other.dopcolor)
+            {
+                return false;
+            }
+            return true;
+        }
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+
+            }
+            Tarantul TarantulObj = obj as Tarantul;
+            if (TarantulObj == null)
+            {
+                return false;
+            }
+            else
+            {
+                return Equals(TarantulObj);
+            }
+        }
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
 }
-
 
 
 

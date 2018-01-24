@@ -77,6 +77,10 @@ namespace WindowsFormsApplicationlaba2
                 {
                     MessageBox.Show(ex.Message, "Ошибка переполнения", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+                catch (ParkingAlreadyHaveException ex)
+                {
+                    MessageBox.Show(ex.Message, "Ошибка совпадения", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message, "Общая ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -98,11 +102,11 @@ namespace WindowsFormsApplicationlaba2
                         IAnimal ianimal = parking.GetTarantulInShowcase(Convert.ToInt32(maskedTextBox1.Text));
                         if (ianimal != null)
                         {
-                            Bitmap bmp = new Bitmap(pictureBox2.Width, pictureBox2.Height);
+                            Bitmap bmp = new Bitmap(pictureBox1.Width, pictureBox1.Height);
                             Graphics gr = Graphics.FromImage(bmp);
                             ianimal.setPosition(5, 5);
                             ianimal.drawSpiderwolf(gr);
-                            pictureBox2.Image = bmp;
+                            pictureBox1.Image = bmp;
                             Draw();
                             log.Info("Изъятие паука с места:" + Convert.ToInt32(maskedTextBox1.Text) + "успешно");
                         }
@@ -188,18 +192,26 @@ namespace WindowsFormsApplicationlaba2
 
         private void button2_Click(object sender, EventArgs e)
         {
-            parking.LevelDown();
-            log.Info("Переход на уровень ниже Текущий уровень:" + parking.getCurrentLevel);
+            parking.LevelUp();
+            log.Info("Переход на уровень выше Текущий уровень:" + parking.getCurrentLevel);
             listBox1.SelectedIndex = parking.getCurrentLevel;
             Draw();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            parking.LevelUp();
-            log.Info("Переход на уровень выше Текущий уровень:" + parking.getCurrentLevel);
+            parking.LevelDown();
+            log.Info("Переход на уровень ниже Текущий уровень:" + parking.getCurrentLevel);
             listBox1.SelectedIndex = parking.getCurrentLevel;
             Draw();
+           
+        }
+
+        private void buttonsort_Click(object sender, EventArgs e)
+        {
+            parking.Sort();
+            Draw();
+            log.Info("Сортировка уровня " + parking.getCurrentLevel);
         }
     }
 }
